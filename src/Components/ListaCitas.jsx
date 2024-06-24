@@ -3,10 +3,14 @@ import CitaCard from './CitaCard';
 
 const ListaCitas = ({ citas, eliminarCita }) => {
   return (
-    <div className="lista-citas">
-      <h2>ADMINISTRA TUS CITAS</h2>
-      {citas.map((cita) => (
-        <CitaCard key={cita.id} cita={cita} eliminarCita={eliminarCita} />
+    <div className='lista-citas'>
+      <h2>Administra tus citas</h2>
+      {citas.map(cita => (
+        <CitaCard
+          key={cita.id}
+          cita={cita}
+          eliminarCita={eliminarCita}
+        />
       ))}
     </div>
   );
