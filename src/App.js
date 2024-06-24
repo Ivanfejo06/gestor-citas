@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import FormularioCita from './Components/FormularioCita';
+import ListaCitas from './Components/ListaCitas';
 
-function App() {
+const App = () => {
+  const [citas, setCitas] = useState([]);
+
+  const agregarCita = (cita) => {
+    cita.id = new Date().getTime();
+    setCitas([...citas, cita]);
+  };
+
+  const eliminarCita = (id) => {
+    setCitas(citas.filter(cita => cita.id !== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <FormularioCita agregarCita={agregarCita} />
+      <ListaCitas citas={citas} eliminarCita={eliminarCita} />
     </div>
   );
-}
+};
 
 export default App;
